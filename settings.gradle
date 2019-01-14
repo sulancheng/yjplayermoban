@@ -1,0 +1,3 @@
+include ':app',':okgo', ':aliplaylib','okserver'
+//include ':yjplayerdemo:player_demo'
+include ':AliyunVideoCommon'

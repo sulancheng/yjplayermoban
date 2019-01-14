@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion externalCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion externalMinSdkVersion
+        targetSdkVersion externalTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation externalOKHTTP
+}
+
+//apply from: 'bintray.gradle'

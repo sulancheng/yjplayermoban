@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion externalCompileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion externalMinSdkVersion
+        targetSdkVersion externalTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    compile "com.lzy.net:okgo:$versionName_okgo"
+    implementation project(':okgo')
+    implementation externalOKHTTP
+}
+
+//apply from: 'bintray.gradle'

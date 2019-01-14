@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion externalCompileSdkVersion
+    defaultConfig {
+        applicationId "com.yjplay.yjplayer"
+        minSdkVersion externalMinSdkVersion
+        targetSdkVersion externalTargetSdkVersion
+        versionCode externalversioncode
+        versionName externalversionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    signingConfigs {
+        release {
+            keyAlias 'ansu'
+            keyPassword '123456'
+            storeFile file('../player.jks')
+            storePassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+//            zipAlignEnabled true
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false// 开启lint 检测
+        abortOnError false  //lint 遇到 error 时继续 构建
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            //说明so的路径为该libs路径，关联所有地图SDK的so文件
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation externalAndroidSupportV4
+    implementation externalAndroidAppCompatV7
+    implementation externalAndroidRecyclerView
+    implementation externalAndroidDesign
+    implementation externalAndroidannotations
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':okgo')
+    implementation project(':okserver')
+    implementation externalOKHTTP
+    implementation 'pub.devrel:easypermissions:1.0.1'
+    implementation 'com.githang:status-bar-compat:0.7'
+    implementation 'com.github.yalantis:ucrop:2.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation externalEventBus
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation externalGSON
+    //完整版 基于 Google play 的播放器
+//    implementation 'com.ycjiang:VideoPlayModule:2.3.17'
+    //精简版（没有smoothstreaming,dash,hls,只有常规点播功能）
+    //    implementation 'com.ycjiang:VideoPlayModule-Lite:2.3.17'
+    //    implementation(name: 'AlivcPlayer-3.4.9', ext:'aar')
+    //    implementation(name: 'AlivcReporter-1.2', ext:'aar')
+    //    implementation(name: 'AliyunVodPlayer-3.4.9', ext:'aar')
+    api project(':AliyunVideoCommon')
+    api project(':aliplaylib')
+//    api project(':yjplayerdemo:player_demo')
+    //基于bilibili的播放器的控件   https://github.com/CarGuo/GSYVideoPlayer
+    implementation 'com.shuyu:GSYVideoPlayer:6.0.2'
+}
