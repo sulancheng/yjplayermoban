@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -104,15 +103,22 @@ public abstract class BaseActivity extends AppCompatActivity implements  EasyPer
         ButterKnife.bind(this);
     }
 
+//    @Override
+////    public boolean onKeyDown(int keyCode, KeyEvent event) {
+////        switch (keyCode) {
+////            case KeyEvent.KEYCODE_BACK:
+////                finish();
+////                return true;
+////        }
+////        return super.onKeyDown(keyCode, event);
+////    }
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                finish();
-                return true;
-        }
-        return super.onKeyDown(keyCode, event);
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
+
     public void paizhao() {//剪切
         String[] permissions = new String[]{Manifest.permission.CAMERA};
         if (EasyPermissions.hasPermissions(this, permissions)) {

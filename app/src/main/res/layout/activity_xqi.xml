@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.XqiActivity">
-    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
-        android:id="@+id/detail_player"
+    <com.yjplay.yjplayer.widge.MyCustomVideo
+        android:id="@+id/my_player"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 </LinearLayout>
