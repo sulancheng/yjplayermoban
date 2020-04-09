@@ -1,29 +1,41 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
+greendao {
+    schemaVersion 1//数据库的版本
+    daoPackage 'com.csu.xgum.greendaod'
+    targetGenDir 'src/main/java'
+}
 android {
-    compileSdkVersion externalCompileSdkVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
-        applicationId "com.yjplay.yjplayer"
-        minSdkVersion externalMinSdkVersion
-        targetSdkVersion externalTargetSdkVersion
-        versionCode externalversioncode
-        versionName externalversionName
+        applicationId "com.csu.xgum"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "V1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        ndk { abiFilters "armeabi-v7a", "armeabi" }
         multiDexEnabled true
     }
     signingConfigs {
         release {
-            keyAlias 'ansu'
+            keyAlias 'susu'
             keyPassword '123456'
-            storeFile file('../player.jks')
+            storeFile file('../xgum.jks')
             storePassword '123456'
         }
     }
     buildTypes {
         release {
             minifyEnabled false
-//            zipAlignEnabled true
+            zipAlignEnabled true
 //            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -31,7 +43,14 @@ android {
     lintOptions {
         checkReleaseBuilds false// 开启lint 检测
         abortOnError false  //lint 遇到 error 时继续 构建
+//        disable 'MissingTranslation' //忽略多语言错误
     }
+    //这是新添加内容
+//    packagingOptions {
+//        exclude 'META-INF/androidx.transition_transition.version'
+//        exclude 'META-INF/DEPENDENCIES'
+//
+//    }
     sourceSets {
         main {
             jniLibs.srcDir 'libs'
@@ -42,41 +61,79 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                // 自定义输出路径
+                variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + File.separator + "app/release")
+                //在这里修改apk文件名
+                outputFileName = "greendaotest-${variant.name}-${variant.versionName}.apk"
+            }
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
-    implementation externalAndroidSupportV4
-    implementation externalAndroidAppCompatV7
-    implementation externalAndroidRecyclerView
-    implementation externalAndroidDesign
-    implementation externalAndroidannotations
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["constraint"]
+    implementation rootProject.ext.dependencies["annotations"]
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':okgo')
-    implementation project(':okserver')
-    implementation externalOKHTTP
-    implementation 'pub.devrel:easypermissions:1.0.1'
-    implementation 'com.githang:status-bar-compat:0.7'
-    implementation 'com.github.yalantis:ucrop:2.2.1'
+    //    implementation project(':qrCodeScan')
+    implementation 'com.bigkoo:alertview:1.0.3'
+    //1.1.0 API改动过大，老用户升级需谨慎
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    //没有使用特殊Header，可以不加这行
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
-    implementation externalEventBus
+    implementation 'pub.devrel:easypermissions:1.0.1'
+    implementation 'com.githang:status-bar-compat:0.7'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    api project(':okserver')
+    //    api project(':okgo')
+    //    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation project(':FlycoTabLayout_Lib')
+    api 'com.yarolegovich:discrete-scrollview:1.4.9'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
-    implementation externalGSON
-    //完整版 基于 Google play 的播放器
-//    implementation 'com.ycjiang:VideoPlayModule:2.3.17'
-    //精简版（没有smoothstreaming,dash,hls,只有常规点播功能）
-    //    implementation 'com.ycjiang:VideoPlayModule-Lite:2.3.17'
-    //    implementation(name: 'AlivcPlayer-3.4.9', ext:'aar')
-    //    implementation(name: 'AlivcReporter-1.2', ext:'aar')
-    //    implementation(name: 'AliyunVodPlayer-3.4.9', ext:'aar')
-    api project(':AliyunVideoCommon')
-    api project(':aliplaylib')
-//    api project(':yjplayerdemo:player_demo')
+    implementation project(':qrCodeScan')
+    implementation 'com.github.yalantis:ucrop:2.2.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.13'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    //    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
+    //管理生命周期  防止内存泄漏
+    //    implementation 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+    implementation project(':convenientbanner')
+    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
+    api 'com.contrarywind:Android-PickerView:3.2.6'
+    //    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.makeramen:roundedimageview:2.2.1'
+    implementation 'com.haibin:calendarview:3.5.5'
+    implementation 'me.jessyan:autosize:1.1.2'
+    //适配
+    //    implementation 'com.github.qapqap:TimelineView:v1.6'//物流时间线
+    //    implementation project(':snappingstepper')
+    implementation project(':citypicker')
+    implementation project(':codeedit')
+    //    implementation project(':ctimelineview')
+    implementation 'com.android.support:multidex:1.0.3'
+//    implementation(name: 'alipaySdk-15.6.5-20190718211148', ext: 'aar')
+    implementation project(':multi-image-selector')
+    implementation project(':flowlayout-lib')
+    implementation 'org.greenrobot:greendao:3.2.2'
+    // add library
+    implementation project(':FastBleLib')
     //基于bilibili的播放器的控件   https://github.com/CarGuo/GSYVideoPlayer
-    implementation 'com.shuyu:GSYVideoPlayer:6.0.2'
+    implementation 'com.shuyu:GSYVideoPlayer:6.0.3'
 }

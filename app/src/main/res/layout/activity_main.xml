@@ -1,26 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ff00ff"
-    tools:context=".activity.MainActivity">
+    >
 
-    <!--<chuangyuan.ycj.videolibrary.widget.VideoPlayerView-->
-        <!--android:id="@+id/exo_play_context_id"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp"-->
-        <!--app:controller_layout_id="@layout/simple_exo_playback_control_view"-->
-        <!--app:player_layout_id="@layout/simple_exo_view"-->
-        <!--app:player_preview_layout_id="@layout/exo_default_preview_layout"-->
-        <!--app:show_timeout="3000"-->
-        <!--app:surface_type="texture_view"-->
-        <!--app:fastforward_increment="0"-->
-        <!--app:rewind_increment="0"-->
-        <!--app:player_list="true"-->
-        <!--app:resize_mode="fit"-->
-        <!--app:use_controller="true"-->
-        <!--/>-->
+    <RelativeLayout
+        android:id="@+id/ll_message"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/acthead_height"
+        android:paddingLeft="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/back_blc"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="消息"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/title_size_act" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"></FrameLayout>
+
+    <View
+        android:id="@+id/v"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerVertical="true"
+        android:background="@color/lighter_gray" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tl_2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:paddingTop="2dp"
+        tl:tl_iconHeight="26dp"
+        tl:tl_iconWidth="26dp"
+        tl:tl_indicator_color="#ff4848"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="#292D33"
+        tl:tl_textUnselectColor="#C1C5CC"
+        tl:tl_textsize="12sp"
+        tl:tl_underline_color="#DDDDDD"
+        tl:tl_underline_height="1dp" />
 </LinearLayout>

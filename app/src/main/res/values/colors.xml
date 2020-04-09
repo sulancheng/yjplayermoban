@@ -4,11 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lighter_gray">#ddd</color>
+    <color name="resou_itembg">#70ffffff</color>
+    <color name="line">#dedede</color>
     <color name="white">#fff</color>
     <color name="head_back">#991415</color>
     <color name="head_back_pre">#50991415</color>
     <color name="main_white_text">#ffffff</color>
-    <color name="background_view">#eaeaea</color>
+    <color name="mytran">#00000000</color>
+    <color name="background_view">#F2F3F8</color>
+    <color name="background_vizhut">#F7F7FA</color>
     <color name="headtext">#666666</color>
     <color name="text_black">#000000</color>
     <color name="text_content">#4A4A4A</color>
@@ -17,4 +21,19 @@
     <color name="bgcalgray">#b3b3b3</color>
     <color name="bgorange">#ffed642f</color>
     <color name="teamwork">#333333</color>
+    <color name="reshouco">#fde7d6</color>
+    <color name="shouye_one">#de5b31</color>
+    <color name="zhuantlan">#FFDB03</color>
+    <color name="zhuantlanpre">#50FFDB03</color>
+    <color name="shouye_hot">#ffde5b31</color>
+
+    <color name="sel_bg">#F9FAFB</color>
+    <color name="sel_oneantwo">#858B9C</color>
+    <color name="sel_title">#111A34</color>
+    <color name="sel_center">#2295F5</color>
+    <color name="shaixununsekect">#999999</color>
+    <color name="select_item_bg">#fff</color>
+    <color name="unselect_item_bg">#fafafa</color>
+    <color name="select_item_textco">#333333</color>
+    <color name="unselect_item_textco">#7E7867</color>
 </resources>

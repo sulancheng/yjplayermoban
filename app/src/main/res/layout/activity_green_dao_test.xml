@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".act.GreenDaoTestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_ins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="insert"
+            android:text="添加" />
+
+        <Button
+            android:id="@+id/bt_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="uptatedata"
+            android:text="更新" />
+
+        <Button
+            android:id="@+id/bt_see"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="seedata"
+            android:text="查看" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/three_bian">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="填充" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <Button
+            android:id="@+id/bt_r1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="填充" />
+        <Button
+            android:id="@+id/bt_r2"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/bt_r1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="填充2" />
+    </RelativeLayout>
+</LinearLayout>

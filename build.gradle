@@ -1,29 +1,39 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
     repositories {
+        //阿里云镜像
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         google()
-        jcenter()
-        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }
+        jcenter() { url 'http://jcenter.bintray.com/' }
     }
     apply from: 'config/config.gradle'
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
-        
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
     }
 }
 
 allprojects {
     repositories {
+        //阿里云镜像
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         google()
-        jcenter()
         maven { url "https://jitpack.io" }
-        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }
-//        mavenCentral()
+        jcenter() { url 'http://jcenter.bintray.com/' }
+        // 添加下面的内容
+        flatDir {
+            dirs 'libs'
+        }
+
     }
 }
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习页面</title>
+    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        .videopar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+       function getconteny() {
+          var content =window.Android.getContent();
+          //alert(content);
+          $("#xuecontent").html(content);
+           binali();
+           binalitwo();
+           //binalithree();
+        }
+
+       function binali() {
+           var mydiv = $("#xuecontent")[0];
+           var objs = mydiv.getElementsByTagName("img");
+            var quanbu="start";
+           for(var i=0;i<objs.length;i++){
+               objs[i].dataType = i;
+               quanbu = quanbu+","+objs[i].src
+           }
+           for(var i=0;i<objs.length;i++){
+
+               objs[i].onclick=function(){
+                   window.Android.openImage(this.src,quanbu,this.dataType);
+               }
+           }
+       }
+       function binalitwo() {
+           var mydiv = $("#xuecontent")[0];
+           var objs = mydiv.getElementsByTagName("span");
+
+           //var myspan = mydiv.getElementsByTagName("span");
+           for(var i=0;i<objs.length;i++){
+               $(objs).attr("class","woshezhide");
+               //alert($(objs).attr("class"));
+           }
+       }
+       function binalithree() {
+           var myvideo = $("div video").first();
+           myvideo.attr("preload","metadata");
+           //alert(myvideo.attr("preload"));
+       }
+    </script>
+    <style>
+        .woshezhide{
+            line-height:28px;
+        }
+         .prolist::after, .prolist:after, .prolist after { clear: both; content: "."; display: block; font-size: 0; height: 15px; line-height: 0; visibility: hidden; }
+    </style>
+</head>
+<body onload="getconteny()">
+    <div id="xuecontent" style="width: 100%">
+
+    </div>
+    <div class="prolist"></div>
+</body>
+</html>
