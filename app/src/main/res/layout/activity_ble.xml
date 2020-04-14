@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ble.BleActivity">
 
+    <Button
+        android:text="发送bond"
+        android:id="@+id/bt_senddata"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="26dp"
         android:background="#fff"
         app:srlAccentColor="@android:color/white"
         app:srlEnableLoadMore="true"
