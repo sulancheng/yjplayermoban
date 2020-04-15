@@ -8,8 +8,18 @@
     tools:context=".ble.BleActivity">
 
     <Button
-        android:text="发送bond"
+        android:text="发送data"
         android:id="@+id/bt_senddata"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+    <Button
+        android:text="停止bond"
+        android:id="@+id/bt_tsop"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+    <Button
+        android:text="停止allbond"
+        android:id="@+id/bt_alltsop"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
     <com.scwang.smartrefresh.layout.SmartRefreshLayout

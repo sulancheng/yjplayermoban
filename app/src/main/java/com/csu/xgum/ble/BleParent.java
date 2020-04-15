@@ -1,6 +1,7 @@
 package com.csu.xgum.ble;
 
 import com.clj.fastble.BleManager;
+import com.clj.fastble.callback.BleIndicateCallback;
 import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
@@ -26,11 +27,11 @@ public class BleParent {
 
     public final UUID SERVER_B_UUID_SERVER = UUID.fromString("0000FFF0-0000-1000-8000-00805f9b34fb");
     public final UUID SERVER_B_UUID_WRITE = UUID.fromString("0000FFF1-0000-1000-8000-00805f9b34fb");
-    public final UUID SERVER_B_UUID_RESPONE = UUID.fromString("0000FFF2-0000-1000-8000-00805f9b34fb");
+    public final UUID SERVER_B_UUID_RESPONE = UUID.fromString("0000FFF2-0000-1000-8000-00805f9b34fb");//read
     public final UUID SERVER_B_UUID_NOTIFY = UUID.fromString("0000FFF3-0000-1000-8000-00805f9b34fb");//NOTIFY
     public BleDevice bleDevice;
 
-    public void oppenNotify(BleNotifyCallback callback) {
+    public BleParent oppenNotify(BleNotifyCallback callback) {
         BleManager.getInstance().notify(
                 bleDevice,
                 SERVER_B_UUID_SERVER.toString(),
@@ -52,15 +53,61 @@ public class BleParent {
 
                     @Override
                     public void onCharacteristicChanged(byte[] data) {
-                        MyLog.i("BleManagerble", "收到数据 data" + Arrays.toString(data));
                         callback.onCharacteristicChanged(data);
                         // 打开通知后，设备发过来的数据将在这里出现
                     }
                 });
+
+        return this;
+    }
+
+
+    public BleParent stopNotify() {
+        BleManager.getInstance().stopNotify(bleDevice, SERVER_B_UUID_SERVER.toString(),
+                SERVER_B_UUID_NOTIFY.toString());
+        return this;
+    }
+
+
+    public void indicRead(BleIndicateCallback callback) {
+        BleManager.getInstance().indicate(
+                bleDevice,
+                SERVER_B_UUID_SERVER.toString(),
+                SERVER_B_UUID_RESPONE.toString(),true,
+                new BleIndicateCallback() {
+                    @Override
+                    public void onIndicateSuccess() {
+                        // 打开通知操作成功
+                        MyLog.i("BleManagerble", "打开ind通知成功");
+                        callback.onIndicateSuccess();
+                    }
+
+                    @Override
+                    public void onIndicateFailure(BleException exception) {
+                        // 打开通知操作失败
+                        MyLog.i("BleManagerble", "打开ind通知失败 exception= " + exception.toString());
+                        callback.onIndicateFailure(exception);
+                    }
+
+                    @Override
+                    public void onCharacteristicChanged(byte[] data) {
+                        // 打开通知后，设备发过来的数据将在这里出现
+                        callback.onCharacteristicChanged(data);
+                    }
+                });
+    }
+
+    public void stopIndicNotify() {
+        BleManager.getInstance().stopIndicate(bleDevice, SERVER_B_UUID_SERVER.toString(),
+                SERVER_B_UUID_RESPONE.toString());
     }
 
     public void setDevice(BleDevice bleDevice) {
         this.bleDevice = bleDevice;
+    }
+
+    public BleDevice getDevice() {
+        return this.bleDevice;
     }
 
     public <T> Observable<T> band() {
@@ -81,7 +128,7 @@ public class BleParent {
     }
 
     public <T> Observable<T> publSendMessage(String data) {
-        byte[] b = new byte[]{(byte)0x03,(byte)0x01};
+        byte[] b = new byte[]{(byte) 0x03, (byte) 0x01};
         return Observable.create((ObservableEmitter<T> e) -> {
             BleManager.getInstance().write(
                     bleDevice,

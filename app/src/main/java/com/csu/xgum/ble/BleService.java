@@ -28,31 +28,23 @@ public class BleService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            //NotificationCompat.Builder builder =
-            //new NotificationCompat.Builder(this, CHANNEL_ID)
-            //         .setContentTitle("")
-            //         .setContentText("");
-            NotificationChannel channel = new NotificationChannel("suble", "bletest", NotificationManager.IMPORTANCE_MIN);
-            channel.enableVibration(false);//去除振动
-
-            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            if (manager != null) manager.createNotificationChannel(channel);
-
-            Notification.Builder builder = new Notification.Builder(getApplicationContext(),"suble")
-                    .setContentTitle("正在后台运行")
-                    .setSmallIcon(R.mipmap.ic_launcher);
-            startForeground(1, builder.build());//id must not be 0,即禁止是0
-        }
+        initialize();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        initialize();
+
         return new MyBinder();
     }
 
     private HashMap<String, BleParent> mBleParents = new HashMap<>();
+
+    public void dilDel(String tag) {
+        if (mBleParents.get(tag) != null) {
+            MyLog.i("BleManagerble5", "删除设备" + tag);
+            mBleParents.remove(tag);
+        }
+    }
 
     public BleParent getAndSlpshBleParent(String tag, BleDevice bleDevice) {
         BleParent bleParent = null;
@@ -73,6 +65,22 @@ public class BleService extends Service {
     }
 
     private void initialize() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            //NotificationCompat.Builder builder =
+            //new NotificationCompat.Builder(this, CHANNEL_ID)
+            //         .setContentTitle("")
+            //         .setContentText("");
+            NotificationChannel channel = new NotificationChannel("suble", "bletest", NotificationManager.IMPORTANCE_MIN);
+            channel.enableVibration(false);//去除振动
+
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (manager != null) manager.createNotificationChannel(channel);
+
+            Notification.Builder builder = new Notification.Builder(getApplicationContext(), "suble")
+                    .setContentTitle("正在后台运行")
+                    .setSmallIcon(R.mipmap.ic_launcher);
+            startForeground(1, builder.build());//id must not be 0,即禁止是0
+        }
     }
 
     class MyBinder extends Binder {
@@ -110,5 +118,20 @@ public class BleService extends Service {
                 }
             });
         }
+    }
+
+
+    public void stopCon(String mac) {
+        BleParent curentPar = mBleParents.get(mac);
+        if (curentPar != null) {
+            BleDevice device = curentPar.getDevice();
+            if (device != null)
+                BleManager.getInstance().disconnect(device);
+        }
+    }
+
+    public void stopAllCon() {
+        BleManager.getInstance().disconnectAllDevice();
+        BleManager.getInstance().destroy();
     }
 }
