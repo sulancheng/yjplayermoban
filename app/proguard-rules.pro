@@ -209,7 +209,7 @@
 -keep class com.google.gson.** { *; }
 -keep class com.google.gson.stream.** { *; }
 # 如果使用了Gson之类的工具要使被它解析的JavaBean类即实体类不被混淆。
--keep class com.susu.oa.bean.** { *; }
+-keep class com.csu.xgum.bean.** { *; }
 #-keep public class com.xkdper.zhili.act.contractall.** { *;}
 #-keep class com.leif.shengxsc.network.requestbean.** { *; }
 #-keep class com.leif.shengxsc.entity.** { *; }
