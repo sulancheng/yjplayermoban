@@ -1,7 +1,7 @@
 package com.csu.xgum.ble;
 
 import com.clj.fastble.data.BleDevice;
-import com.csu.xgum.utils.MyLog;
+import com.example.mypublib.utils.MyLog;
 
 import java.util.HashMap;
 

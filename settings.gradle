@@ -1,1 +1,1 @@
-include ':app', ':convenientbanner', ':okserver', ':okgo', ':FlycoTabLayout_Lib', ':qrCodeScan', ':snappingstepper', ':citypicker', ':codeedit', ':ctimelineview', ':multi-image-selector', ':flowlayout-lib', ':FastBleLib'
+include ':app', ':convenientbanner', ':okserver', ':okgo', ':FlycoTabLayout_Lib', ':qrCodeScan', ':snappingstepper', ':citypicker', ':codeedit', ':ctimelineview', ':multi-image-selector', ':flowlayout-lib', ':FastBleLib', ':mypublib'

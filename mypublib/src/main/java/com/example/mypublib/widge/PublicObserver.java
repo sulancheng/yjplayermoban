@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

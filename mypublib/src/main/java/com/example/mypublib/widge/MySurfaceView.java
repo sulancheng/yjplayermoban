@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
-import com.csu.xgum.utils.MyLog;
+import com.example.mypublib.utils.MyLog;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

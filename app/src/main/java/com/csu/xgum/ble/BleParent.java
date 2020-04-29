@@ -7,7 +7,7 @@ import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 import com.csu.xgum.bean.MyTrowable;
-import com.csu.xgum.utils.MyLog;
+import com.example.mypublib.utils.MyLog;
 
 import java.util.Arrays;
 import java.util.UUID;

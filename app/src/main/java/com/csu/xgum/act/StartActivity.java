@@ -10,7 +10,6 @@ import android.provider.Settings;
 
 import com.csu.xgum.R;
 import com.csu.xgum.base.BaseActivity;
-import com.csu.xgum.ble.BleActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -85,7 +84,7 @@ public class StartActivity extends BaseActivity implements EasyPermissions.Permi
     }
 
     private void gotoNext() {
-        Intent intent = new Intent(this, BleActivity.class);
+        Intent intent = new Intent(this, DiscreteScrollViewTest.class);
         startActivity(intent);
         finish();
     }

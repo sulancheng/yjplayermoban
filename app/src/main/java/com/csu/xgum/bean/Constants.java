@@ -1,7 +1,7 @@
 package com.csu.xgum.bean;
 
 
-import com.csu.xgum.utils.CommenUtils;
+import com.example.mypublib.utils.CommenUtils;
 
 public class Constants {
     // APP_ID 替换为你的应用从官方网站申请到的合法appId

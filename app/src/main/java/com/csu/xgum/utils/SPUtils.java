@@ -6,6 +6,7 @@ import android.content.SharedPreferences.Editor;
 
 import com.csu.xgum.bean.Constants;
 
+
 public class SPUtils {
     public static String GUIDE_ISFIRST = "guide_isfirst";
     public static String CONFIGFILE_NAME = "config";

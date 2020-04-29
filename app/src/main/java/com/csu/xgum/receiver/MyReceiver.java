@@ -20,7 +20,7 @@ import android.util.Log;
 
 import com.csu.xgum.R;
 import com.csu.xgum.act.MainActivity;
-import com.csu.xgum.utils.MyLog;
+import com.example.mypublib.utils.MyLog;
 
 import org.json.JSONException;
 import org.json.JSONObject;

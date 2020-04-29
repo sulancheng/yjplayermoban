@@ -3,13 +3,14 @@ package com.csu.xgum.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.csu.xgum.bean.MyTrowable;
+import com.example.mypublib.utils.MyLog;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
-import com.csu.xgum.bean.MyTrowable;
 
 import java.io.File;
 import java.util.HashMap;
@@ -51,15 +52,6 @@ public class OkutilsObserver {
     public static <T> Observable<T> uploadPhotoAndChangeNickName(Context context, List<File> files, HashMap<String, String> params, Class<T> clazz) {
         return requsetWenjian(getServerChannel() + "User/UploadPhotoAndChangeNickName?token=" + params.get("token") + "&nickName=" + params.get("nickName"), context, files, params, clazz);
     }
-
-
-
-
-
-
-
-
-
 
 
 

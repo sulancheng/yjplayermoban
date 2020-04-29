@@ -10,8 +10,8 @@ import com.csu.xgum.entity.Student;
 import com.csu.xgum.greendaod.StudentDao;
 import com.csu.xgum.greendaof.DBManager;
 import com.csu.xgum.greendaof.server.StuDaoSer;
-import com.csu.xgum.utils.MyLog;
-import com.csu.xgum.widge.PublicObserver;
+import com.example.mypublib.utils.MyLog;
+import com.example.mypublib.widge.PublicObserver;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import org.greenrobot.greendao.database.Database;

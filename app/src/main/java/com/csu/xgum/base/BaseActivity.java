@@ -15,14 +15,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.csu.xgum.R;
+import com.csu.xgum.bean.Constants;
+import com.csu.xgum.utils.SPUtils;
+import com.example.mypublib.utils.CommenUtils;
+import com.example.mypublib.utils.Exit;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.gson.Gson;
 import com.jakewharton.rxbinding2.view.RxView;
-import com.csu.xgum.R;
-import com.csu.xgum.bean.Constants;
-import com.csu.xgum.utils.CommenUtils;
-import com.csu.xgum.utils.Exit;
-import com.csu.xgum.utils.SPUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.io.File;

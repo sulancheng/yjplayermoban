@@ -199,7 +199,8 @@
             android:name=".act.GreenDaoTestActivity"
             android:launchMode="singleTask"
             android:screenOrientation="landscape" />
-        <activity android:name=".ble.BleActivity" />
+        <activity android:name=".ble.BleActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".act.YjPlayerTestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -208,13 +209,15 @@
             android:name=".act.YjPlayListActi"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <!--android:enabled是否可以被Android系统实例化。-->
-        <!--android:exported是否可以跟其他应用的组件直接交互。-->
+        <!-- android:enabled是否可以被Android系统实例化。 -->
+        <!-- android:exported是否可以跟其他应用的组件直接交互。 -->
         <service
             android:name=".ble.BleService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
+        <activity android:name=".act.DiscreteScrollViewTest"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

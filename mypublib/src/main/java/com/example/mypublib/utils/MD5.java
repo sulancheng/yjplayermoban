@@ -1,4 +1,4 @@
-package com.csu.xgum.utils;
+package com.example.mypublib.utils;
 
 import java.security.MessageDigest;
 

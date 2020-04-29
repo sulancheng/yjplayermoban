@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 
 import android.content.Context;
@@ -20,13 +20,14 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 
-import com.csu.xgum.R;
+import com.example.mypublib.R;
 
 
 public class CircleImageView extends AppCompatImageView {
 
-    private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
+    private static final ImageView.ScaleType SCALE_TYPE = ImageView.ScaleType.CENTER_CROP;
 
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
     private static final int COLORDRAWABLE_DIMENSION = 2;
@@ -94,12 +95,12 @@ public class CircleImageView extends AppCompatImageView {
     }
 
     @Override
-    public ScaleType getScaleType() {
+    public ImageView.ScaleType getScaleType() {
         return SCALE_TYPE;
     }
 
     @Override
-    public void setScaleType(ScaleType scaleType) {
+    public void setScaleType(ImageView.ScaleType scaleType) {
         if (scaleType != SCALE_TYPE) {
             throw new IllegalArgumentException(String.format("ScaleType %s not supported.", scaleType));
         }

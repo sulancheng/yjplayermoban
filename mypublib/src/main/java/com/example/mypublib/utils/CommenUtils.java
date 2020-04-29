@@ -1,4 +1,4 @@
-package com.csu.xgum.utils;
+package com.example.mypublib.utils;
 
 import android.app.Activity;
 import android.content.Context;

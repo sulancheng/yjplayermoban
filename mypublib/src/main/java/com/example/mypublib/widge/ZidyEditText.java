@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 import android.content.Context;
 import android.util.AttributeSet;

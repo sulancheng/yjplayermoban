@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.csu.xgum.R;
-import com.csu.xgum.utils.MyLog;
+import com.example.mypublib.R;
+import com.example.mypublib.utils.MyLog;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer;
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
@@ -42,7 +42,7 @@ public class MyCustomVideo extends StandardGSYVideoPlayer {
 
     private void initview() {
         nextmy = findViewById(R.id.nextmy);
-        nextmy.setOnClickListener(new OnClickListener() {
+        nextmy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MyLog.i(Tag, "点击到了555");

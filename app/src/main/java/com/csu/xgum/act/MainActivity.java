@@ -5,16 +5,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 
-import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.csu.xgum.R;
 import com.csu.xgum.base.BaseActivity;
 import com.csu.xgum.base.BaseFragment;
 import com.csu.xgum.base.Myapplication;
 import com.csu.xgum.bean.EventMessage;
 import com.csu.xgum.bean.TabEntity;
-import com.csu.xgum.utils.MyLog;
+import com.example.mypublib.utils.MyLog;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

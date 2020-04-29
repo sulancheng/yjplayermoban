@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -17,8 +17,10 @@ public class MyNoScrollViewPager extends ViewPager {
         super(context, attrs);
     }
 
+
+
     @Override
-    public boolean onInterceptHoverEvent(MotionEvent event) {
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
         return false;
     }
 
@@ -26,6 +28,7 @@ public class MyNoScrollViewPager extends ViewPager {
     public boolean onTouchEvent(MotionEvent ev) {
         return false;
     }
+
 
     @Override
     public void setCurrentItem(int item) {
@@ -87,4 +90,26 @@ public class MyNoScrollViewPager extends ViewPager {
 //			ivs.add(iv);
 //		}
 //	}
+
+/**
+ * 总结：
+       view viewgroup生命周期：：构造方法、onFinishInflate、onMeasure、onSizeChanged、onLayout、onDraw、dispatchDraw。
+        viewgroup中ondraw不会调用  有dispathdraw
+        viewgroup会调用：dispatchDraw();
+        View绘制分三个步骤，顺序是：onMeasure，onLayout，onDraw。经代码亲测，log输出显示：调用invalidate（必须工作线程）方法postInvalidate（可以子线程）只会执行onDraw方法；
+        调用requestLayout方法只会执行onMeasure方法和onLayout方法，并不会执行onDraw方法。所以当我们进行View更新时，若仅View的显示内容发生改变且新显示内容不影响View的大小、位置，
+        则只需调用invalidate方法；若View宽高、位置发生改变且显示内容不变，只需调用requestLayout方法；
+        若两者均发生改变，则需调用两者，按照View的绘制流程，推荐先调用requestLayout方法再调用invalidate方法。
+    第一种在xml里直接引用的，执行顺序一般是：
+        构造方法->onFinishInflate()(只执行一次)->onMeasure()(可能多次执行)->
+        onSizeChanged()(在重新onMeasure的时候发现跟之前测量的尺寸不一样的时候就会回调此方法)
+        ->onLayout()(布置子View)->onMeasure()->onLayout().......
+
+        第二种在Activity中setContentView( newCustomView(this))引用的，执行顺序与第一种相比，
+        除了构造方法引用的不一致和不执行onFinishInflate()外，其他基本一致。
+
+        调用view.invalidate(),会触发onDraw和computeScroll()。前提是该view被附加在当前窗口上
+
+        view.postInvalidate(); //是在非UI线程上调用的
+ * */
 

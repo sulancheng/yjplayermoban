@@ -26,8 +26,8 @@ import com.clj.fastble.scan.BleScanRuleConfig;
 import com.clj.fastble.utils.HexUtil;
 import com.csu.xgum.R;
 import com.csu.xgum.base.BaseActivity;
-import com.csu.xgum.utils.MyLog;
-import com.csu.xgum.widge.PublicObserver;
+import com.example.mypublib.utils.MyLog;
+import com.example.mypublib.widge.PublicObserver;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 

@@ -1,4 +1,4 @@
-package com.csu.xgum.widge;
+package com.example.mypublib.widge;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

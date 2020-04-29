@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["constraint"]
+    api rootProject.ext.dependencies["annotations"]
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'io.reactivex.rxjava2:rxjava:2.2.13'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    //    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
+    //管理生命周期  防止内存泄漏
+    //    implementation 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
+    api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    api 'com.google.code.gson:gson:2.8.1'
+    api 'com.shuyu:GSYVideoPlayer:6.0.3'
+//基于bilibili的播放器的控件   https://github.com/CarGuo/GSYVideoPlayer
+    api 'com.github.bumptech.glide:glide:3.8.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    api 'pub.devrel:easypermissions:1.0.1'
+    api 'com.githang:status-bar-compat:0.7'
+    api 'org.greenrobot:eventbus:3.0.0'
+    api project(':FlycoTabLayout_Lib')
+    api project(':flowlayout-lib')
+    api project(':convenientbanner')
+    api project(':qrCodeScan')
+    api project(':okserver')
+    api project(':FastBleLib')
+    api project(':citypicker')
+    api project(':codeedit')
+    api project(':multi-image-selector')//选择图片
+    api 'com.bigkoo:alertview:1.0.3'//底部弹窗
+    api 'com.afollestad.material-dialogs:core:0.9.6.0'
+    api 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    api 'com.github.yalantis:ucrop:2.2.1'//裁剪图片
+    api 'com.daimajia.swipelayout:library:1.2.0@aar'//侧滑删除
+
+    //1.1.0 API改动过大，老用户升级需谨慎
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    api 'com.yarolegovich:discrete-scrollview:1.4.9'//横向画廊效果
+    api 'com.github.paradoxie:AutoVerticalTextview:0.1'//上下滚动text
+    api 'com.contrarywind:Android-PickerView:3.2.6'//弹出滚动
+    api 'com.makeramen:roundedimageview:2.2.1'
+    api 'com.haibin:calendarview:3.5.5'//日历
+    api 'me.jessyan:autosize:1.1.2'//适配尺寸
+
+}
