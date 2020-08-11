@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="myquanju" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/ChangeActAnimal</item>
+    </style>
+
+    <style name="mycitytheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="cpCancelTextSize">@dimen/cp_cancel_text_size</item>
+        <item name="cpCancelTextColor">@color/cp_color_gray</item>
+
+        <item name="cpClearTextIcon">@mipmap/cp_icon_clear_all</item>
+        <item name="cpSearchTextSize">@dimen/cp_search_text_size</item>
+        <item name="cpSearchTextColor">@color/cp_color_gray_dark</item>
+        <item name="cpSearchHintText">@string/cp_search_hint_text</item>
+        <item name="cpSearchHintTextColor">@color/cp_color_gray_light</item>
+        <item name="cpSearchCursorDrawable">@color/cp_color_gray_dark</item>
+
+        <item name="cpListItemHeight">@dimen/cp_list_item_height</item>
+        <item name="cpListItemTextSize">@dimen/cp_list_item_text_size</item>
+        <item name="cpListItemTextColor">@color/cp_color_gray_deep</item>
+
+        <item name="cpEmptyIcon">@mipmap/cp_icon_empty</item>
+        <item name="cpEmptyIconWidth">@dimen/cp_empty_icon_width</item>
+        <item name="cpEmptyIconHeight">@dimen/cp_empty_icon_height</item>
+        <item name="cpEmptyText">@string/cp_no_result</item>
+        <item name="cpEmptyTextSize">@dimen/cp_empty_text_size</item>
+        <item name="cpEmptyTextColor">@color/cp_color_gray_deep</item>
+
+        <item name="cpGridItemBackground">@drawable/cp_grid_item_bg</item>
+        <item name="cpGridItemSpace">@dimen/cp_grid_item_space</item>
+
+        <item name="cpSectionHeight">@dimen/cp_section_height</item>
+        <item name="cpSectionTextSize">@dimen/cp_section_text_size</item>
+        <item name="cpSectionTextColor">@color/cp_color_gray</item>
+        <item name="cpSectionBackground">@color/cp_color_section_bg</item>
+
+        <item name="cpIndexBarTextSize">@dimen/cp_index_bar_text_size</item>
+        <item name="cpIndexBarNormalTextColor">@color/cp_color_gray</item>
+        <item name="cpIndexBarSelectedTextColor">@color/cp_color_gray_dark</item>
+
+        <item name="cpOverlayWidth">@dimen/cp_overlay_width</item>
+        <item name="cpOverlayHeight">@dimen/cp_overlay_height</item>
+        <item name="cpOverlayTextSize">@dimen/cp_overlay_text_size</item>
+        <item name="cpOverlayTextColor">@android:color/white</item>
+        <item name="cpOverlayBackground">@drawable/cp_overlay_bg</item>
+    </style>
+
+    <style name="ChangeActAnimal" type="text/css">
+        <item name="android:windowContentTransitions" tools:ignore="NewApi">true</item>
+        //还要加一条，不然会出现白屏哦
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowEnterAnimation">@anim/slide_in_right</item>-->
+        <!--<item name="android:windowExitAnimation">@anim/out_to_left</item>-->
+        <!--<item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>-->
+        <!--<item name="android:activityOpenExitAnimation">@anim/out_to_left</item>-->
+        <!--<item name="android:activityCloseEnterAnimation">@anim/finish_in</item>-->
+        <!--<item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>-->
+    </style>
+
+    <style name="AnimationRightFade">
+        <item name="android:windowEnterAnimation">@anim/in_lefttoright</item>
+        <item name="android:windowExitAnimation">@anim/out_righttoleft</item>
+    </style>
+
+    <style name="Animationbottmtotop">
+        <item name="android:windowEnterAnimation">@anim/bottomtotop</item>
+        <item name="android:windowExitAnimation">@anim/toptobottom</item>
+    </style>
+
+    <style name="myguide_theme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="myquanjutr" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <!--设置窗口的背景为透明，设置透明背景必须要设置此项-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--设置窗口的背景是否为半透明，设置透明背景必须要设置此项-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AddressDialogAnimation" type="text/css">
+        <item name="android:windowEnterAnimation">@anim/enter</item>
+        <item name="android:windowExitAnimation">@anim/exit</item>
+    </style>
+
+    <style name="mysousuo">
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">8</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingLeft">16dp</item>
+    </style>
+
+    <style name="list_cans">
+
+        <item name="android:layout_marginLeft">22dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+    </style>
+</resources>
