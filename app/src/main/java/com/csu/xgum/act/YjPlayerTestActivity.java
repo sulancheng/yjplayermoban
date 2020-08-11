@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
 import android.transition.Transition;
 import android.view.KeyEvent;
@@ -102,7 +103,7 @@ public class YjPlayerTestActivity extends BaseActivity {
 //                detailPlayer.getFullscreenButton().callOnClick();
 //            }
 //        }, 800);
-        detailPlayer.startPlayLogic();
+//        detailPlayer.startPlayLogic();
     }
 
 
@@ -237,9 +238,10 @@ public class YjPlayerTestActivity extends BaseActivity {
         //释放所有
         detailPlayer.setVideoAllCallBack(null);
         GSYVideoManager.releaseAllVideos();
+        super.onBackPressed();
         if (isTransition && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             MyLog.i(Tag, "调用返回了2");
-            super.onBackPressed();
+            ActivityCompat.finishAfterTransition(this);//进行退出动画。
         } else {
             MyLog.i(Tag, "调用返回了3");
             new Handler().postDelayed(() -> {

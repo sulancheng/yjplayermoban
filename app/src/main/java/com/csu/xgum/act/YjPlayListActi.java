@@ -56,7 +56,11 @@ public class YjPlayListActi extends BaseActivity {
         intent.putExtra(YjPlayerTestActivity.TRANSITION, true);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             Pair pair = new Pair<>(view, YjPlayerTestActivity.IMG_TRANSITION);
-            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair);
+            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair);//这个就是 点击的控件慢慢放大跳转到第二个页面 用的最广
+//            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeCustomAnimation(this,//这个可以自定义动画
+//                    R.anim.abc_fade_in, R.anim.abc_fade_out);
+//            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeScaleUpAnimation(view, 此效果不明显
+//                    view.getWidth() / 2, view.getHeight() / 2, 0, 0);
             ActivityCompat.startActivity(activity, intent, activityOptions.toBundle());
         } else {
             activity.startActivity(intent);

@@ -84,7 +84,8 @@ public class StartActivity extends BaseActivity implements EasyPermissions.Permi
     }
 
     private void gotoNext() {
-        Intent intent = new Intent(this, DiscreteScrollViewTest.class);
+//        Intent intent = new Intent(this, DiscreteScrollViewTest.class);
+        Intent intent = new Intent(this, YjPlayListActi.class);
         startActivity(intent);
         finish();
     }

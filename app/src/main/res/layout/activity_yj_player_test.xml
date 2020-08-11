@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.csu.xgum.widge.MyCustomVideo
+    <com.example.mypublib.widge.MyCustomVideo
         android:id="@+id/my_player"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
